@@ -3,13 +3,15 @@ class Solution {
         if(s.length() != t.length() ||s.length()==0){
             return false;
         }
-        int[] counts = new int[26];
-        for(int i = 0; i<s.length(); i++){
-            counts[s.charAt(i)-'a']++;
-            counts[t.charAt(i)-'a']--;
+        HashMap<Character,Integer> counts = new HashMap<>();
+        for(int i = 0 ; i<s.length();i++)
+       {
+          counts.put(s.charAt(i), counts.getOrDefault(s.charAt(i), 0) + 1);
+          counts.put(t.charAt(i), counts.getOrDefault(t.charAt(i), 0) - 1);
+            
         }
-        for(int count:counts){
-        if(count!= 0)
+       for (int val : counts.values()){
+        if(val!= 0)
             return false;
         }
         return true;
