@@ -7,7 +7,7 @@ class Solution {
                 idx++;
             }
         }
-        for(int i = idx; i<nums.length;i++){
+        while(idx < nums.length){
             nums[idx]=0;
             idx++;
         }
