@@ -3,10 +3,13 @@ class Solution {
      Map<Character,Integer> seen = new HashMap<>();
         
         char[] chars = s.toCharArray();
-        for(char c : chars){
-        seen.put(c,seen.getOrDefault(c,0)+1);
+        int count =0;
+        for(char c : chars)
+        if(c=='A'){
+            count++;
         }
-        if (seen.getOrDefault('A', 0) >= 2) {
+        
+        if (count >= 2) {
             return false;
         }
 
