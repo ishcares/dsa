@@ -3,22 +3,24 @@ class Solution {
        if(nums==null||nums.length==0){
         return 0;
        }
-       Arrays.sort(nums);
-       int count=1;
-       int max = 1;
-       for(int i =1 ; i<nums.length;i++){
-        if(nums[i]==nums[i-1]){
-            continue;
-        }
-        if(nums[i]==nums[i-1]+1){
+       Set<Integer> seen = new HashSet<>();
+       for(int num:nums){
+        seen.add(num);
+       }
+       
+       int max= 0;
+       for(int num :seen){
+        if(!seen.contains(num-1)){
+            int count =1;
+            int current = num;
+
+        while(seen.contains(current+1)){
+            current+=1;
             count++;
         }
-        else{
-            count =1;
-            max = Math.max(max,count);
+                max=Math.max(max,count);
 
         }
-        max = Math.max(max,count);
        }
        return max;
     }
